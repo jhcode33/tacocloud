@@ -16,7 +16,7 @@ import tacos.Order;
 public class OrderReceiverController {
 
   private final KitchenUI kitchenUI;
-  private final OrderReceiver orderReceiver;
+  //private final OrderReceiver orderReceiver;
 
   // jms, rabbit은 listener로 queue를 받으면 사라진다.
   // 따라서 profile을 통해서 listener 빈을 사용하지 않고, template 빈만 사용해서

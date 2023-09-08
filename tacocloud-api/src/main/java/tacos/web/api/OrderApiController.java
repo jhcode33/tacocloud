@@ -47,9 +47,9 @@ public class OrderApiController {
   @PostMapping(consumes="application/json")
   @ResponseStatus(HttpStatus.CREATED)
   public Mono<Order> postOrder(@RequestBody Mono<Order> order) {
-    order.subscribe(orderMessages::sendOrder); // TODO: not ideal...work into reactive flow below
     return order
-        .flatMap(repo::save);
+            .doOnNext(orderMessages::sendOrder)
+            .flatMap(repo::save);
   }
 
 
