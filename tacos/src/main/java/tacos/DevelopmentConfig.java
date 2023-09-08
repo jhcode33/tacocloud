@@ -1,6 +1,8 @@
 package tacos;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +27,8 @@ public class DevelopmentConfig {
   public CommandLineRunner dataLoader(IngredientRepository repo,
         UserRepository userRepo, PasswordEncoder encoder, TacoRepository tacoRepo) { // user repo for ease of testing with a built-in user
     return args -> {
+      Set<String> uniqueIngredientIds = new HashSet<>();
+
       Ingredient flourTortilla = new Ingredient("FLTO", "Flour Tortilla", Type.WRAP);
       Ingredient cornTortilla = new Ingredient("COTO", "Corn Tortilla", Type.WRAP);
       Ingredient groundBeef = new Ingredient("GRBF", "Ground Beef", Type.PROTEIN);
@@ -40,11 +44,19 @@ public class DevelopmentConfig {
               flourTortilla, cornTortilla, groundBeef, carnitas,
               tomatoes, lettuce, cheddar, jack, salsa, sourCream);
 
-      repo.saveAll(ingredients).then().subscribe();
+      ingredients
+              .filter(ingredient -> uniqueIngredientIds.add(ingredient.getId())) // Filter out duplicates
+              .flatMap(repo::save) // Save unique ingredients
+              .then()
+              .subscribe();
 
-      userRepo.save(new User("habuma", encoder.encode("password"),
+      //== Create Sample User data ==//
+      User user = new User("habuma", encoder.encode("password"),
               "Craig Walls", "123 North Street", "Cross Roads", "TX",
-              "76227", "123-123-1234", "test@test.com")).subscribe();
+              "76227", "123-123-1234", "test@test.com");
+
+      userRepo.save(user).subscribe();
+
 
       Taco taco1 = new Taco();
       taco1.setId("taco1");
@@ -63,7 +75,16 @@ public class DevelopmentConfig {
 
       Flux<Taco> tacos = Flux.just(taco1, taco2, taco3);
 
-      tacoRepo.saveAll(tacos).then().subscribe();
+      tacos
+        .flatMap(taco -> {
+            if (!uniqueIngredientIds.contains(taco.getId())) {
+              return tacoRepo.save(taco); // Save unique tacos
+            } else {
+              return Mono.empty(); // Skip duplicates
+            }
+        })
+        .then()
+        .subscribe();
     };
   }
 }
