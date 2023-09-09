@@ -1,3 +1,4 @@
+/*
 package tacos.security;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,9 @@ public class RegistrationController {
   @ResponseStatus(HttpStatus.CREATED)
   public User processRegistration(@RequestBody RegistrationForm form) {
     log.info("등록");
-    return userRepo.save(form.toUser(passwordEncoder));
+    return userRepo.save(form.toUser(passwordEncoder)).block();
    // return "redirect:/login";
   }
 
 }
+*/

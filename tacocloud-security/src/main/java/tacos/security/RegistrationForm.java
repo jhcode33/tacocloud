@@ -1,3 +1,4 @@
+/*
 package tacos.security;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,13 @@ public class RegistrationForm {
   private String state;
   private String zip;
   private String phone;
+  private String email;
   
   public User toUser(PasswordEncoder passwordEncoder) {
     return new User(
         username, passwordEncoder.encode(password),
-        fullName, street, city, state, zip, phone);
+        fullName, street, city, state, zip, phone, email);
   }
   
 }
+*/

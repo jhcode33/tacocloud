@@ -37,7 +37,7 @@ public class OrderController {
   public String orderForm(@AuthenticationPrincipal User user, 
       @ModelAttribute Order order) {
     if (order.getDeliveryName() == null) {
-      order.setDeliveryName(user.getFullname());
+      order.setDeliveryName(user.getFullName());
     }
     if (order.getDeliveryStreet() == null) {
       order.setDeliveryStreet(user.getStreet());

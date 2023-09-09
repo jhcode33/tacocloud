@@ -25,7 +25,7 @@ export class DesignComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router, private cartService: CartService) { }
 
   ngOnInit() {
-    this.httpClient.get('http://localhost:8080/ingredients')
+    this.httpClient.get<any[]>('http://localhost:8080/ingredients')
         .subscribe(data => {
           this.allIngredients = data;
           this.wraps = this.allIngredients.filter((w: any) => w.type === 'WRAP');

@@ -1,3 +1,4 @@
+/*
 package tacos.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +12,7 @@ import tacos.User;
 import tacos.data.UserRepository;
 
 @Service
-public class UserRepositoryUserDetailsService 
+public class UserRepositoryUserDetailsService
         implements UserDetailsService {
 
   private UserRepository userRepo;
@@ -20,11 +21,11 @@ public class UserRepositoryUserDetailsService
   public UserRepositoryUserDetailsService(UserRepository userRepo) {
     this.userRepo = userRepo;
   }
-  
+
   @Override
   public UserDetails loadUserByUsername(String username)
       throws UsernameNotFoundException {
-    User user = userRepo.findByUsername(username);
+    User user = userRepo.findByUsername(username).block();
     if (user != null) {
       return user;
     }
@@ -33,3 +34,4 @@ public class UserRepositoryUserDetailsService
   }
 
 }
+*/

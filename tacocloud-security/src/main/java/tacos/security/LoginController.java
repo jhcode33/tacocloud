@@ -1,3 +1,4 @@
+/*
 package tacos.security;
 
 import org.springframework.http.HttpStatus;
@@ -40,10 +41,11 @@ public class LoginController {
     private User loginUser(User user){
         User loginUser = null;
 
-        loginUser = userRepository.findByUsername(user.getUsername());
+        loginUser = userRepository.findByUsername(user.getUsername()).block();
         if (loginUser != null && loginUser.getPassword().equals(user.getPassword())) {
             return loginUser;
         }
         return loginUser;
     }
 }
+*/

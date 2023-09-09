@@ -5,12 +5,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import tacos.Ingredient;
 import tacos.data.IngredientRepository;
 
 import java.net.URI;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/ingredients", produces="application/json")
@@ -25,12 +25,12 @@ public class IngredientController {
   }
 
   @GetMapping
-  public Iterable<Ingredient> allIngredients() {
+  public Flux<Ingredient> allIngredients() {
     return repo.findAll();
   }
 
   @GetMapping("/{id}")
-  public Optional<Ingredient> byId(@PathVariable String id) {
+  public Mono<Ingredient> byId(@PathVariable String id) {
     return repo.findById(id);
   }
 
@@ -43,11 +43,14 @@ public class IngredientController {
   }
 
   @PostMapping
-  public ResponseEntity<Ingredient> postIngredient(@RequestBody Ingredient ingredient) {
-    Ingredient saved = repo.save(ingredient);
-    HttpHeaders headers = new HttpHeaders();
-    headers.setLocation(URI.create("http://localhost:8080/ingredients/" + ingredient.getId()));
-    return new ResponseEntity<>(saved, headers, HttpStatus.CREATED);
+  public Mono<ResponseEntity<Ingredient>> postIngredient(@RequestBody Mono<Ingredient> ingredient) {
+    return ingredient
+            .flatMap(repo::save)
+            .map(i -> {
+              HttpHeaders headers = new HttpHeaders();
+              headers.setLocation(URI.create("http://localhost:8080/ingredients/" + i.getId()));
+              return new ResponseEntity<Ingredient>(i, headers, HttpStatus.CREATED);
+            });
   }
 
   @DeleteMapping("/{id}")

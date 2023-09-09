@@ -7,28 +7,36 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tacocloud-restclient" />
-        <module name="tacocloud-messaging-jms" />
-        <module name="tacocloud-jwt" />
-        <module name="tacocloud-domain" />
-        <module name="tacocloud-data" />
-        <module name="taco-cloud" />
         <module name="tacocloud-kitchen" />
-        <module name="tacocloud-ui" />
+        <module name="tacocloud-domain-mongodb" />
         <module name="tacocloud-security" />
+        <module name="tacocloud-restclient" />
         <module name="tacocloud-api" />
+        <module name="tacocloud-messaging-jms" />
         <module name="tacocloud-messaging-kafka" />
+        <module name="taco-cloud" />
         <module name="tacocloud-web" />
         <module name="tacocloud-messaging-rabbitmq" />
+        <module name="tacocloud-data-mongodb" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tacocloud-data" target="17" />
+      <module name="tacocloud-domain" target="17" />
+      <module name="tacocloud-email" target="17" />
+      <module name="tacocloud-jwt" target="17" />
+      <module name="tacocloud-ui" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="taco-cloud" options="-parameters" />
       <module name="tacocloud-api" options="-parameters" />
       <module name="tacocloud-data" options="-parameters" />
+      <module name="tacocloud-data-mongodb" options="-parameters" />
       <module name="tacocloud-domain" options="-parameters" />
+      <module name="tacocloud-domain-mongodb" options="-parameters" />
+      <module name="tacocloud-email" options="-parameters" />
       <module name="tacocloud-jwt" options="-parameters" />
       <module name="tacocloud-kitchen" options="-parameters" />
       <module name="tacocloud-messaging-jms" options="-parameters" />

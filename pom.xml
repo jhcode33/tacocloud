@@ -5,7 +5,7 @@
 
     <groupId>sia</groupId>
   	<artifactId>taco-cloud-parent</artifactId>
-  	<version>0.0.8-SNAPSHOT</version>
+  	<version>0.0.11-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -28,14 +28,20 @@
       <maven.compiler.source>17</maven.compiler.source>
       <maven.compiler.target>17</maven.compiler.target>
       <tacocloud.version>${project.version}</tacocloud.version>
-      <project.version>0.0.8-SNAPSHOT</project.version>
+      <project.version>0.0.11-SNAPSHOT</project.version>
     </properties>
 
     <modules>
         <module>tacos</module>
         <module>tacocloud-api</module>
-        <module>tacocloud-data</module>
-        <module>tacocloud-domain</module>
+<!--    <module>tacocloud-data</module>
+        <module>tacocloud-domain</module>-->
+
+        <!-- change mongodb ch11 -->
+        <module>tacocloud-data-mongodb</module>
+        <module>tacocloud-domain-mongodb</module>
+
+<!--        <module>tacocloud-email</module>-->
         <module>tacocloud-kitchen</module>
         <module>tacocloud-messaging-jms</module>
         <module>tacocloud-messaging-kafka</module>

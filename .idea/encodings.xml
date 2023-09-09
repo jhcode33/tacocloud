@@ -6,10 +6,13 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tacocloud-data-mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-data/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-data/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tacocloud-domain-mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tacocloud-email/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-jwt/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-kitchen/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tacocloud-messaging-jms/src/main/java" charset="UTF-8" />

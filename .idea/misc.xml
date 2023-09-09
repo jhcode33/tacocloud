@@ -12,6 +12,10 @@
           <option name="goal" value="clean" />
           <option name="projectPath" value="$PROJECT_DIR$/tacocloud-kitchen/pom.xml" />
         </MavenCompilerTask>
+        <MavenCompilerTask>
+          <option name="goal" value="clean" />
+          <option name="projectPath" value="$PROJECT_DIR$/tacos/pom.xml" />
+        </MavenCompilerTask>
       </set>
     </option>
   </component>
@@ -19,11 +23,13 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/tacocloud-data-mongodb/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/jwt/pom.xml" />
+        <option value="$PROJECT_DIR$/tacocloud-ui/pom.xml" />
         <option value="$PROJECT_DIR$/tacos/tacocloud-messaging-jms/pom.xml" />
       </set>
     </option>
